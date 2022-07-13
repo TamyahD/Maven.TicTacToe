@@ -1,11 +1,13 @@
 package rocks.zipcodewilmington.tictactoe;
 
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
+    static List<Integer> userPositions = new ArrayList<>();
+    static List<Integer> cpuPositions = new ArrayList<>();
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
         Character[][] board = {
                 {'_', '|', '_', '|', '_'},
                 {'_', '|', '_', '|', '_'},
@@ -16,7 +18,6 @@ public class Main {
         displayGameBoard(board);
 
         while (true) {
-            Scanner sc = new Scanner(System.in);
             System.out.println("Enter position you wish to place (1-9): ");
             int pos = sc.nextInt();
             System.out.println("Position " + pos);
@@ -44,8 +45,11 @@ public class Main {
         char symbol;
         if (user.equals("user")) {
             symbol = 'X';
+            userPositions.add(position);
         } else {
             symbol = 'O';
+            cpuPositions.add(position);
+
         }
 
 
@@ -84,5 +88,9 @@ public class Main {
         }
         displayGameBoard(board);
         System.out.println("\n\n");
+    }
+
+    void winnerTracker() {
+
     }
 }
